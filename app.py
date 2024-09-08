@@ -135,7 +135,7 @@ def index():
     </head>
     <body>
         <header>
-            <img src="https://fitandflex.in/cdn/shop/articles/istockphoto-1218693828-612x612_1445x.jpg?v=1719902711" alt="Header Image" class="header-image">
+            # <img src="https://fitandflex.in/cdn/shop/articles/istockphoto-1218693828-612x612_1445x.jpg?v=1719902711" alt="Header Image" class="header-image">
             <div class="nav-container">
                 <h1 class="logo">Dry Fruit Shop</h1>
                 <nav>
