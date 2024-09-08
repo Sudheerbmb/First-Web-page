@@ -1,28 +1,9 @@
-from flask import Flask, render_template, render_template_string
-from flask_sqlalchemy import SQLAlchemy
+from flask import Flask, render_template_string
 
 app = Flask(__name__)
 
-# Configure SQLite database
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///instance/your_flask_app.sqlite'
-app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
-db = SQLAlchemy(app)
-
-# Define a simple model for demonstration
-class Product(db.Model):
-    id = db.Column(db.Integer, primary_key=True)
-    name = db.Column(db.String(100), nullable=False)
-    description = db.Column(db.String(200), nullable=False)
-    image_url = db.Column(db.String(200), nullable=False)
-
-# Create the database tables
-with app.app_context():
-    db.create_all()
-
 @app.route('/')
 def index():
-    # Example query to get products from the database
-    products = Product.query.all()
     html_content = '''
     <!DOCTYPE html>
     <html lang="en">
@@ -30,7 +11,7 @@ def index():
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Dry Fruit Shop</title>
-        <link rel="icon" href="{{ url_for('static', filename='favicon.ico') }}" type="image/x-icon">
+        
         <style>
             body {
                 font-family: 'Roboto', sans-serif;
@@ -178,13 +159,21 @@ def index():
         <section id="products">
             <h3>Our Best Sellers</h3>
             <div class="product-container">
-                {% for product in products %}
                 <div class="product-item">
-                    <img src="{{ product.image_url }}" alt="{{ product.name }}">
-                    <h4>{{ product.name }}</h4>
-                    <p>{{ product.description }}</p>
+                    <img src="https://cdn.pixabay.com/photo/2022/10/04/06/26/almonds-7497425_1280.jpg" alt="Almonds">
+                    <h4>Almonds</h4>
+                    <p>High-quality almonds sourced from California.</p>
                 </div>
-                {% endfor %}
+                <div class="product-item">
+                    <img src="https://vaaradhifarms.com/cdn/shop/files/amer_med_roasted_cashews_in_a_white_bown_on_top_of_a_wooden_cou_2b1dd2d1-1690-45f2-ad3b-e79afcd643ab.png?v=1714074548&width=2048" alt="Cashews">
+                    <h4>Cashews</h4>
+                    <p>Crispy and delicious cashews packed with nutrients.</p>
+                </div>
+                <div class="product-item">
+                    <img src="https://img.freepik.com/premium-photo/product-shots-walnuts-high-quality-4k-ultra-h_670382-121972.jpg" alt="Walnuts">
+                    <h4>Walnuts</h4>
+                    <p>Fresh walnuts rich in Omega-3 and antioxidants.</p>
+                </div>
             </div>
         </section>
         
@@ -200,7 +189,7 @@ def index():
     </body>
     </html>
     '''
-    return render_template_string(html_content, products=products)
+    return render_template_string(html_content)
 
 if __name__ == '__main__':
     app.run(debug=True, port=5666)
