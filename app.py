@@ -1,11 +1,3 @@
-# from flask import Flask,render_template
-# app= Flask(__name__)
-
-# @app.route("/")
-# def mbsa():
-#     return render_template("index.html")
-
-
 from flask import Flask, render_template_string
 
 app = Flask(__name__)
@@ -19,6 +11,7 @@ def index():
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Dry Fruit Shop</title>
+        
         <style>
             body {
                 font-family: 'Roboto', sans-serif;
@@ -31,6 +24,12 @@ def index():
                 background-color: #fff;
                 padding: 20px 0;
                 box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+                position: relative;
+            }
+            .header-image {
+                width: 100%;
+                height: auto;
+                display: block;
             }
             .nav-container {
                 display: flex;
@@ -39,6 +38,8 @@ def index():
                 max-width: 1200px;
                 margin: 0 auto;
                 padding: 0 20px;
+                position: relative;
+                z-index: 1;
             }
             .logo {
                 font-size: 1.5em;
@@ -134,6 +135,7 @@ def index():
     </head>
     <body>
         <header>
+            <img src="https://fitandflex.in/cdn/shop/articles/istockphoto-1218693828-612x612_1445x.jpg?v=1719902711" alt="Header Image" class="header-image">
             <div class="nav-container">
                 <h1 class="logo">Dry Fruit Shop</h1>
                 <nav>
@@ -191,10 +193,4 @@ def index():
     return render_template_string(html_content)
 
 if __name__ == '__main__':
-    app.run(debug=True,port=5666)
-
-
-
-
-
-
+    app.run(debug=True, port=5666)
