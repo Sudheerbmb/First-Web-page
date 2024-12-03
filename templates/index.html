@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!-- <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -28,4 +28,132 @@
     </ul>
     <a href="https://www.example.com" target="_blank">Visit Example.com</a>
 </body>
+</html> -->
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Name Checker</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%);
+            color: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            overflow: hidden;
+            margin: 0;
+        }
+
+        .container {
+            background-color: rgba(0, 0, 0, 0.8);
+            padding: 20px;
+            border-radius: 15px;
+            text-align: center;
+            width: 400px;
+            box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.5);
+        }
+
+        h1 {
+            font-size: 2.5em;
+            margin-bottom: 20px;
+        }
+
+        input[type="text"] {
+            width: 80%;
+            padding: 10px;
+            margin: 10px 0;
+            border-radius: 5px;
+            border: none;
+            outline: none;
+        }
+
+        button {
+            background-color: #ff5f6d;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1em;
+        }
+
+        button:hover {
+            background-color: #ff1f4d;
+        }
+
+        .message {
+            margin-top: 20px;
+            font-size: 1.2em;
+        }
+
+        .moving-object {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 50px;
+            height: 50px;
+            background-color: #ff5f6d;
+            border-radius: 50%;
+            animation: move 5s infinite alternate ease-in-out;
+        }
+
+        @keyframes move {
+            from {
+                transform: translate(-50%, -50%) rotate(0deg);
+            }
+
+            to {
+                transform: translate(200px, 200px) rotate(360deg);
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1>Welcome to the Name Checker</h1>
+        <form id="nameForm">
+            <input type="text" id="nameInput" placeholder="Enter your name" required>
+            <button type="submit">Submit</button>
+        </form>
+        <div class="message" id="message"></div>
+    </div>
+    <div class="moving-object"></div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const nameForm = document.getElementById("nameForm");
+            const nameInput = document.getElementById("nameInput");
+            const messageDiv = document.getElementById("message");
+            const movingObject = document.querySelector('.moving-object');
+
+            nameForm.addEventListener("submit", function (e) {
+                e.preventDefault();
+                const name = nameInput.value.trim().toLowerCase();
+
+                if (name === "bhumika") {
+                    messageDiv.innerHTML = "Apologies for using bad words 😔.";
+                } else if (name) {
+                    messageDiv.innerHTML = `Hello, ${nameInput.value.trim().charAt(0).toUpperCase() + nameInput.value.trim().slice(1)}! Welcome to our site 🎉.`;
+                }
+            });
+
+            // Animation effect
+            let angle = 0;
+            function moveObject() {
+                angle += 2;
+                movingObject.style.transform = `translate(-50%, -50%) rotate(${angle}deg)`;
+                requestAnimationFrame(moveObject);
+            }
+            moveObject();
+        });
+    </script>
+</body>
+
 </html>
