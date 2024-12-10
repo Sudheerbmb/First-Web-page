@@ -209,8 +209,8 @@ def index():
     message = ""
     if request.method == "POST":
         name = request.form.get("name")
-        if name and name.lower() == "bhumika":
-            message = "Apologies for using bad words 😔."
+        if name and name.lower() == "manasa":
+            message = "We will be best friends Manasa...from your idiot "
         else:
             message = f"Hello, {name.capitalize()}! Welcome to our site 🎉."
     return render_template("index.html", message=message)
