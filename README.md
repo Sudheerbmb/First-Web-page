@@ -9,5 +9,6 @@ This is a simple Flask-based web application that serves a landing page, an abou
 - Contact page
 - Flask-based backend
 - Simple front-end using HTML templates
-- 
+  
+
 ### Access here: https://dry-fruit-theta.vercel.app/
